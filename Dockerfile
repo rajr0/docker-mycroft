@@ -11,15 +11,16 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y build-essential && \
-  apt-get install -y software-properties-common && \
-  apt-get install -y byobu curl git htop man unzip vim wget && \
-  apt-get install -y python python-dev python-pip python-virtualenv python-setuptools python-gobject-dev && \
-  apt-get install -y virtualenvwrapper && \
-  apt-get install -y libtool autoconf bison swig alsa-utils libglib2.0-dev s3cmd && \
-  apt-get install -y libglib2.0-dev portaudio19-dev mpg123 espeak supervisor screen flac && \
-  apt-get install -y libffi6 libffi-dev libssl-dev && \
+  apt-get --allow-unauthenticated -y upgrade
+RUN \
+  apt-get install --allow-unauthenticated-y build-essential && \
+  apt-get install --allow-unauthenticated-y software-properties-common && \
+  apt-get install --allow-unauthenticated-y byobu curl git htop man unzip vim wget && \
+  apt-get install --allow-unauthenticated-y python python-dev python-pip python-virtualenv python-setuptools python-gobject-dev && \
+  apt-get install --allow-unauthenticated-y virtualenvwrapper && \
+  apt-get install --allow-unauthenticated-y libtool autoconf bison swig alsa-utils libglib2.0-dev s3cmd && \
+  apt-get install --allow-unauthenticated-y libglib2.0-dev portaudio19-dev mpg123 espeak supervisor screen flac && \
+  apt-get install --allow-unauthenticated-y libffi6 libffi-dev libssl-dev && \
   rm -rf /var/lib/apt/lists/* && \
   mkdir /mycroft && \
   TOP=/mycroft && \
